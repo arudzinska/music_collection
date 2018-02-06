@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS users;
-CREATE TABLE users (
-  id integer primary key autoincrement,
-  name string not null,
-  email string not null
+DROP TABLE IF EXISTS albums;
+CREATE TABLE albums (
+  id INTEGER PRIMARY KEY AUTOINCREMENT  ,
+  artist STRING NOT NULL,
+  name STRING NOT NULL
+  release_date DATE NOT NULL
 );
