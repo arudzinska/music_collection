@@ -27,14 +27,15 @@ def root():
 #     return render_template('about.html', name="Mary Jane")
 
 @app.route('/albums', methods=['POST', 'GET'])
-def show_albums():
-    albums = db.session.query(Album).all() # or you could have used User.query.all()
-
-    return render_template('show_albums.html', albums=albums)
+# def show_albums():
+#     albums = db.session.query(Album).all() # or you could have used User.query.all()
+#
+#     return render_template('show_albums.html', albums=albums)
 
 ###########################################################################################
-def add_album():
+def show_albums():
     album = AlbumForm()
+    albums = db.session.query(Album).all()  # or you could have used User.query.all()
 
     if request.method == 'POST':
         if album.validate_on_submit():
@@ -50,6 +51,7 @@ def add_album():
 
             flash('Album successfully added')
             return render_template('show_albums.html', albums=albums)
+    return render_template('show_albums.html', albums=albums)
 
 # @app.route('/add-user', methods=['POST', 'GET'])
 # def add_user():
