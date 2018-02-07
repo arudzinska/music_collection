@@ -2,7 +2,8 @@
 
 {% block main %}
 <div class="container">
-  <h1 class="page-header">Show Albums heh</h1>
+  <h1 class="page-header">Add new album</h1>
+  <i><b>Hint:</b></i> '90s grunge is the best!
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <div class="alert alert-success">
@@ -15,10 +16,44 @@
     {% endif %}
   {% endwith %}
 
+  <form method="POST" action="{{ url_for('show_albums') }}">
+    <br>
+    {{ form.csrf_token }}
+    <div class="form-group">{{ form.artist.label }} {{ form.artist(size=15, class="form-control") }}</div>
+    <div class="form-group">{{ form.name.label }} {{ form.name(size=15, class="form-control") }}</div>
+    <div class="form-group">{{ form.release_date.label }} {{ form.release_date(size=15, class="form-control", type="date") }}</div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  <br>
+  <br>
+
+  TUUUUU
+    <a href="{{ url_for('sample_page', module=music_collection) }}">sample_page</a>
+  <h1 class="page-header">Albums in the collection</h1>
+  Click on the album ID for more details.
   <ul>
+    <br>
+     <table style="width:50%">
+  <tr>
+    <th>Album ID</th>
+    <th>Album Name</th>
+  </tr>
+       {% for album in albums %}
+  <tr>
+    <td><a href="{{ url_for('describe', id={{ album.id }}, module=music_collection) }}">{{ album.id }}</a></td>
+    <td>{{ album.name }}</td>
+  </tr>
+       {% endfor %}
+
+</table>
+
+
+<!--
     {% for album in albums %}
-    <li>{{ album.name }}</li>
+    <li>{{ album.artist }} {{ album.name }} {{ album.release_date }}</li>
     {% endfor %}
   </ul>
+  -->
+
 </div>
 {% endblock %}

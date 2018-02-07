@@ -27,31 +27,37 @@ def root():
 #     return render_template('about.html', name="Mary Jane")
 
 @app.route('/albums', methods=['POST', 'GET'])
-# def show_albums():
-#     albums = db.session.query(Album).all() # or you could have used User.query.all()
-#
-#     return render_template('show_albums.html', albums=albums)
-
-###########################################################################################
 def show_albums():
-    album = AlbumForm()
-    albums = db.session.query(Album).all()  # or you could have used User.query.all()
+    album_form = AlbumForm()
 
     if request.method == 'POST':
-        if album.validate_on_submit():
+        if album_form.validate_on_submit():
             # Get validated data from form
-            artist = album.artist.data # You could also have used request.form['name']
-            name = album.name.data # You could also have used request.form['email']
-            release_date = album.release_date.data
+            artist = album_form.artist.data # You could also have used request.form['name']
+            name = album_form.name.data # You could also have used request.form['email']
+            release_date = album_form.release_date.data
 
             # save user to database
-            new_album = Album(artist, name, release_date)
-            db.session.add(new_album)
+            album = Album(artist, name, release_date)
+            db.session.add(album)
             db.session.commit()
 
             flash('Album successfully added')
-            return render_template('show_albums.html', albums=albums)
-    return render_template('show_albums.html', albums=albums)
+            return redirect(url_for('show_albums'))
+
+    albums = db.session.query(Album).all()
+
+    flash_errors(album_form)
+    return render_template('show_albums.html', form=album_form, albums=albums)
+
+@app.route('/albums/id')
+def sample_page():
+    return render_template('sample.html')
+
+@app.route('/albums/<id>')
+def describe(id):
+    return render_template('sample.html')
+
 
 # @app.route('/add-user', methods=['POST', 'GET'])
 # def add_user():
