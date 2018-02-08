@@ -50,8 +50,14 @@ def show_albums():
     flash_errors(album_form)
     return render_template('show_albums.html', form=album_form, albums=albums)
 
-@app.route('/albums/<int:id>', methods=['GET'])
+@app.route('/albums/<int:id>', methods=['GET', 'POST'])
 def describe(id):
+    if request.method == 'POST':
+        album = Album.query.get(id)
+        Album.query.filter_by(id=id).delete()
+        db.session.commit()
+        return redirect(url_for('show_albums'))
+
     album = Album.query.get(id)
     return render_template('describe_album.html', album=album)
 
