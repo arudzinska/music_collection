@@ -50,35 +50,11 @@ def show_albums():
     flash_errors(album_form)
     return render_template('show_albums.html', form=album_form, albums=albums)
 
-@app.route('/albums/id')
-def sample_page():
-    return render_template('sample.html')
-
-@app.route('/albums/<id>')
+@app.route('/albums/<int:id>', methods=['GET'])
 def describe(id):
-    return render_template('sample.html')
+    album = Album.query.get(id)
+    return render_template('describe_album.html', album=album)
 
-
-# @app.route('/add-user', methods=['POST', 'GET'])
-# def add_user():
-#     user_form = UserForm()
-#
-#     if request.method == 'POST':
-#         if user_form.validate_on_submit():
-#             # Get validated data from form
-#             name = user_form.name.data # You could also have used request.form['name']
-#             email = user_form.email.data # You could also have used request.form['email']
-#
-#             # save user to database
-#             user = User(name, email)
-#             db.session.add(user)
-#             db.session.commit()
-#
-#             flash('User successfully added')
-#             return redirect(url_for('show_users'))
-#
-#     flash_errors(user_form)
-#     return render_template('add_user.html', form=user_form)
 
 # Flash errors from the form if validation fails
 def flash_errors(form):
