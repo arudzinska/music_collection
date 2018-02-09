@@ -26,7 +26,7 @@ def root():
 #     """Render the website's about page."""
 #     return render_template('about.html', name="Mary Jane")
 
-@app.route('/albums', methods=['POST', 'GET'])
+@app.route('/albums', methods=['GET', 'POST'])
 def show_albums():
     album_form = AlbumForm()
 
