@@ -26,7 +26,6 @@
 </form>
   <br>
   <br>
-
   <h1 class="page-header">Albums in the collection</h1>
   Click on the album ID for more details.
   <ul>
@@ -38,11 +37,10 @@
   </tr>
        {% for album in albums %}
   <tr>
-    <td><a href="{{ url_for('describe', id=album.id, module=music_collection) }}">{{ album.id }}</a></td>
-    <td>{{ album.name }}</td>
+    <td align="center"><a href="{{ url_for('describe', id=album.id, module=music_collection) }}">{{ album.id }}</a></td>
+    <td align="center">{{ album.name }}</td>
   </tr>
        {% endfor %}
-
 </table>
 </div>
 {% endblock %}
