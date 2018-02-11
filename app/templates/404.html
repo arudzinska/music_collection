@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Page Not Found{% endblock %}
-
+<!--
 {% block css %}
 <style type="text/css">
   body{
@@ -19,10 +19,10 @@
     margin:15px 0;
   }
 </style>
-{% endblock %}
+{% endblock %} -->
 
 {% block main %}
 <h1>404</h1>
 <p>That page doesn't even exist.</p>
-<p>Why don't you just <a href="{{ url_for('home') }}">go back home</a>?</p>
+<p>Why don't you just <a href="{{ url_for('root') }}">go back home</a>?</p>
 {% endblock %}
