@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+  {% endwith %}
+  <br>
+  <br>
+  <h1 class="page-header">Album details</h1>
+  <ul>
+    <br>
+     <table style="width:50%">
+  <tr>
+    <th>Album Name</th>
+    <th>Artist</th>
+      <th>Release Date</th>
+      <th></th>
+  </tr>
+
+  <tr>
+    <td align="center">{{ album.name }}</td>
+    <td align="center">{{ album.artist }}</td>
+      <td align="center">{{ album.release_date }}</td>
+      <td><form method="post" action="{{ url_for('describe', id=album.id, module=music_collection) }}">
+  <button type="submit">Delete album</button>
+</form></td>
+  </tr>
+
+</table>
+</div>
+{% endblock %}
