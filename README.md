@@ -1,6 +1,6 @@
-1) Create a virtual environment with virtualenv in the parent directory
+1) Create a virtual environment with virtualenv in the parent directory.
 
-2) Activate the virtual environment
+2) Activate the virtual environment.
 
 3) Install the required packages:
 $ pip install -r requirements.txt
