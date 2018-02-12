@@ -10,7 +10,7 @@
      $ pip install -r requirements.txt
 ```
 
-4. run start_server.sh (creates the database and runs the local server):
+4. Run start_server.sh (creates the database and runs the local server):
 
 ```
      $ ./start_server.sh
