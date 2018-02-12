@@ -15,7 +15,7 @@
 ```
      $ ./start_server.sh
 ```
-The app is run with active debugger, to switch it off go to run.py and change *debug* to False.
+The app is run with an active debugger, to switch it off go to both run.py and app/views.py and change *debug* to False.
 
 The app can be viewed at http://127.0.0.1:8080.
 
