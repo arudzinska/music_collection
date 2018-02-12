@@ -1,6 +1,6 @@
 # Running the app
 
-1. Create a virtual environment with virtualenv in the parent directory.
+1. Create a virtual environment with virtualenv/venv3 in the parent directory.
 
 2. Activate the virtual environment.
 
