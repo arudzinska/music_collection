@@ -12,6 +12,3 @@
 
 The app can be viewed at http://127.0.01:8080.
 
-
-Commands used for testing the http requests:
-
