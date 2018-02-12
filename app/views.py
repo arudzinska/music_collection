@@ -3,9 +3,11 @@ from flask import render_template, request, redirect, url_for, flash
 from app.forms import AlbumForm
 from app.models import Album
 
+
 @app.route('/')
 def root():
     return render_template('root.html')
+
 
 @app.route('/albums', methods=['GET', 'POST'])
 def show_albums():
@@ -18,7 +20,7 @@ def show_albums():
             name = album_form.name.data
             release_date = album_form.release_date.data
 
-            # saving to the database
+            # dumping data to the database
             album = Album(artist, name, release_date)
             db.session.add(album)
             db.session.commit()
@@ -30,6 +32,7 @@ def show_albums():
 
     flash_errors(album_form)
     return render_template('show_albums.html', form=album_form, albums=albums)
+
 
 @app.route('/albums/<int:id>', methods=['GET', 'DELETE'])
 def describe(id):
@@ -52,11 +55,13 @@ def flash_errors(form):
                 error
             ))
 
+
 @app.after_request
 def add_header(response):
     response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
     response.headers['Cache-Control'] = 'public, max-age=600'
     return response
+
 
 @app.errorhandler(404)
 def page_not_found(error):
