@@ -1,8 +1,8 @@
-1) Create a virtual environment with virtualenv in the parent directory music_collection/
+1) Create a virtual environment with virtualenv in the parent directory
 
 2) Activate the virtual environment
 
-3) install the required packages:
+3) Install the required packages:
 $ pip install -r requirements.txt
 
 4) run start_server.sh (creates the database and runs the local server):
