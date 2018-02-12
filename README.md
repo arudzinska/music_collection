@@ -1,4 +1,4 @@
-1) Create a virtual environment with virtualenv in directory music_collection/
+1) Create a virtual environment with virtualenv in the parent directory music_collection/
 
 2) Activate the virtual environment
 
