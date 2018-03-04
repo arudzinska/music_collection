@@ -1,3 +1,7 @@
+# Music Collection
+
+Simple Flask+SQLite app to add, view and delete albums in a music collection.
+
 # Running the app
 
 1. Create a virtual environment with virtualenv/venv3 in the parent directory.
